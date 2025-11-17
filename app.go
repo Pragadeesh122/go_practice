@@ -1,10 +1,11 @@
 package main
 
 import (
-	//  "fmt"
+	"fmt"
 	// "os"
 	// "strconv"
 	// "strings"
+	"go_practice/utils"
 )
 
 
@@ -20,12 +21,24 @@ func main(){
 	// fileName := "newfile.txt"
 
 
+	num := 43
+
+	numAddr := &num
+
+	fmt.Println(numAddr)
+
+
 	// os.WriteFile(fileName,[]byte(strconv.Itoa(value)),0644)
 
 	// fileContent, err := os.ReadFile(fileName)
 	// if err != nil{
 	// 	fmt.Println("We ran into an error", err)
 	// }
+
+	date := utils.GetDate()
+
+	fmt.Println(date)
+
 
 
 	// file  := string(fileContent)
