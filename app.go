@@ -6,6 +6,7 @@ import (
 	// "strconv"
 	// "strings"
 	"go_practice/utils"
+	"go_practice/server"
 )
 
 
@@ -59,7 +60,8 @@ func main(){
 	// fmt.Println("Total Return with Captial and Inertest :", total_returns)
 	// fmt.Println("An Exmaple funcition below :")
 	// next()
-	app()
+	// app()
+	api.Main()
 	// res,err := bank_calculator()
 
 	// if err != nil{

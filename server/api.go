@@ -1,4 +1,4 @@
-package main
+package api
 
 
 import (
@@ -9,7 +9,7 @@ import (
 
 
 
-func main(){
+func Main(){
 
 	router := gin.Default()
 
@@ -17,6 +17,13 @@ func main(){
 	router.GET("/", func(res *gin.Context){
 		res.JSON(http.StatusOK, gin.H{
 			"Message" : "The server is up and running",
+		})
+	})
+
+
+	router.GET("/gomodule", func(res *gin.Context){
+		res.JSON(http.StatusOK, gin.H{
+			"GoModule" : "This is the Go Module on the gomodule path",
 		})
 	})
 
