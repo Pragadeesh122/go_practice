@@ -14,6 +14,8 @@ type User struct {
 	createdAt time.Time 
 }
 
+
+
 func (user *User) OutputUser(){
 	fmt.Println("First Name", user.firstName)
 	fmt.Println("Last Name", user.lastName)
@@ -42,3 +44,4 @@ func New(firstName string, lastName string, birthDate string) (*User, error){
 		createdAt : time.Now(),
 	}, nil
 }
+

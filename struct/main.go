@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"go_practice/user"
+	"go_practice/admin"
 )
 
 
@@ -16,9 +17,15 @@ func main(){
 		return
 	 }
 	
-	appUser.OutputUser()
-	appUser.ClearName()
-	appUser.OutputUser()
+	 admin, errAdmin := admin.New(appUser,"asdas@gmail.com","dasdasdasd")
+
+	 if errAdmin != nil{
+		fmt.Println(errAdmin)
+		return
+	 }
+	admin.OutputUser()
+	admin.ClearName()
+	admin.OutputUser()
 }
 
 
