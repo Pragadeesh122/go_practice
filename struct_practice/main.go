@@ -5,9 +5,20 @@ import (
 	"errors"
 	"fmt"
 	"go_practice/note"
+	"go_practice/todo"
 	"os"
 	"strings"
 )
+
+
+type Saver interface{
+	Save() error
+}
+
+type OutPutable interface{
+	Saver
+	Display()
+}
 
 func getNoteData()(string,string,error){
 	title,titleErr := getUserInput("Note tile : ")
@@ -33,18 +44,42 @@ func main(){
 		fmt.Println(err)
 		return
 	}
-	
-	note := note.New(title,content)
 
-	note.Display()
-	err = note.Save()
-
+	todoText,err := getUserInput("Todo Text : ")
 
 	if err != nil{
-		fmt.Println("Saving the note failed", err)
+		fmt.Println(err)
 		return
 	}
 
+	todo := todo.New(todoText)
+	note := note.New(title,content)
+	
+	outputData(note)
+	outputData(todo)
+
+
+	res := add(7,4324)
+	fmt.Println(res)
+
+}
+
+func outputData(data OutPutable) error{
+	data.Display()
+	
+	return saveData(data)
+
+}
+
+func saveData(data Saver) error{
+	err := data.Save()
+
+	if err != nil{
+		fmt.Println("Saving the todo failed", err)
+		return err
+	}
+	fmt.Println("The todo file was successfully created")
+	return nil
 }
 
 func getUserInput(prompt string)(string,error){
@@ -58,4 +93,10 @@ func getUserInput(prompt string)(string,error){
 	value = strings.TrimSuffix(value,"\n")
 	value = strings.TrimSuffix(value,"\r")
 	return value, nil
+}
+
+
+
+func add[T int|float64|string](a,b T) T {
+	return a+b
 }
