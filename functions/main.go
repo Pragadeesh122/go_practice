@@ -24,6 +24,11 @@ func main(){
 	fmt.Println(tripled)
 
 
+	res := factorial(5)
+
+	fmt.Println(res)
+
+
 }
 
 
@@ -48,4 +53,13 @@ func double(value int) int {
 
 func triple(value int) int {
 	return value * 3
+}
+
+
+func factorial(num int) int{
+	if num == 0{
+		return 1
+	}
+
+	return num * factorial(num-1)
 }
